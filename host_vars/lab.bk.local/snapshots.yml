@@ -1,0 +1,14 @@
+---
+lab_revert_vms:
+  - name: controller
+    snapshot: baseconfig
+  - name: execution01
+    snapshot: baseconfig
+  - name: execution02
+    snapshot: baseconfig
+  - name: hub
+    snapshot: baseconfig
+  - name: postgres
+    snapshot: baseconfig
+  - name: utility
+    snapshot: baseconfig

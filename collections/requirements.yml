@@ -1,0 +1,9 @@
+---
+collections:
+  - infra.aap_utilities
+  - infra.ee_utilities
+  - infra.controller_configuration
+  - infra.ah_configuration
+  - ansible.controller
+  - redhat.rhel_system_roles
+...

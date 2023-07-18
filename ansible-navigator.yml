@@ -1,0 +1,16 @@
+---
+ansible-navigator:
+  logging:
+    level: critical
+    append: true
+    file: ./ansible-navigator.log
+  execution-environment:
+    container-engine: auto
+    enabled: true
+    pull:
+      policy: missing
+    image: config_ee
+  playbook-artifact:
+    enable: true
+    save-as: 'artifacts/{playbook_name}-artifact-{time_stamp}.json'
+...

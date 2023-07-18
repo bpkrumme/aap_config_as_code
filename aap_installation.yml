@@ -1,0 +1,32 @@
+---
+- name: Install Ansible Automation Platform and apply License
+  hosts: utility
+  become: true
+  vars:
+    aap_setup_down_offline_token: "{{ offline_token }}"
+    aap_setup_down_version: '2.4'
+    aap_setup_working_dir: /root/aap_install
+    aap_setup_inst_force: false
+    aap_setup_rhel_version: '9'
+  vars_files:
+    - vault.yml
+  pre_tasks:
+    - name: Ensure working dir exists
+      ansible.builtin.file:
+        path: "{{ aap_setup_working_dir }}"
+        state: directory
+        mode: '0755'
+    - name: Include variables from install_vars directory
+      ansible.builtin.include_vars:
+        dir: ./install_vars/homelab
+      when: lab_environment == "homelab"
+    - name: Include variables from install_vars directory
+      ansible.builtin.include_vars:
+        dir: ./install_vars/mobile
+      when: lab_environment == "mobile"
+  roles:
+    - infra.aap_utilities.aap_setup_download
+    - infra.aap_utilities.aap_setup_prepare
+    - infra.aap_utilities.aap_setup_install
+    - infra.controller_configuration.license
+...

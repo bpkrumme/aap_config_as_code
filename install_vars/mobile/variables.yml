@@ -1,0 +1,47 @@
+---
+aap_setup_prep_inv_nodes:
+  automationcontroller:
+    - controller.bk.lab
+  database:
+    - postgres.bk.lab
+  automationhub:
+    - hub.bk.lab
+
+aap_setup_prep_inv_vars:
+  automationcontroller:
+    node_type: hybrid
+  all:
+    admin_password: "{{ vault_controller_password }}"
+    pg_host: 'postgres.bk.lab'
+    pg_port: '5432'
+
+    pg_database: 'awx'
+    pg_username: 'awx'
+    pg_password: "{{ vault_pg_password }}"
+    pg_sslmode: 'prefer'
+
+    registry_url: 'registry.redhat.io'
+    receptor_listener_port: 27199
+
+    automationhub_admin_password: "{{ vault_automationhub_admin_password }}"
+
+    automationhub_pg_host: 'postgres.bk.lab'
+    automationhub_pg_port: '5432'
+
+    automationhub_pg_database: 'automationhub'
+    automationhub_pg_username: 'automationhub'
+    automationhub_pg_password: "{{ vault_pg_password }}"
+    automationhub_pg_sslmode: 'prefer'
+
+    automationhub_require_content_approval: true
+    automationhub_auto_sign_collections: false
+
+    automationhub_validate_certs: false
+
+aap_setup_prep_inv_secrets:
+  all:
+    registry_username: "{{ vault_registry_username }}"
+    registry_password: "{{ vault_registry_password }}"
+
+aap_setup_inst_extra_vars:
+  create_preload_data: false

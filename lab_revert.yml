@@ -1,0 +1,29 @@
+---
+- name: Revert snapshots on lab hypervisor
+  hosts: labhost
+  become: true
+  gather_facts: false
+  remote_user: root
+  tasks:
+    - name: Revert snapshots on lab virtual machines
+      ansible.builtin.command: "virsh snapshot-revert --domain {{ item.name }} --snapshotname {{ item.snapshot }} --running"
+      loop: "{{ lab_revert_vms }}"
+      changed_when: true
+- name: Ensure systems are available
+  hosts: aap,utility
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Wait for systems to come online
+      ansible.builtin.wait_for_connection:
+        timeout: 120
+- name: Configure date and time on lab systems
+  hosts: aap,utility
+  become: true
+  tasks:
+    - name: Run chrony makestep
+      ansible.builtin.command: chronyc -a makestep
+      when: ansible_facts['distribution'] == "RedHat"
+      changed_when: true
+  roles:
+    - redhat.rhel_system_roles.timesync
