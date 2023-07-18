@@ -1,4 +1,4 @@
-ansible.cfg
+/ansible.cfg
 /artifacts
 ansible-navigator.log
 /config_ee/context
