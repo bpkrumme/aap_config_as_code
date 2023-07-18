@@ -1,18 +1,18 @@
 ---
 aap_setup_prep_inv_nodes:
   automationcontroller:
-    - controller.bk.lab
+    - controller.mobile.bk.lab
   database:
-    - postgres.bk.lab
+    - postgres.mobile.bk.lab
   automationhub:
-    - hub.bk.lab
+    - hub.mobile.bk.lab
 
 aap_setup_prep_inv_vars:
   automationcontroller:
     node_type: hybrid
   all:
     admin_password: "{{ vault_controller_password }}"
-    pg_host: 'postgres.bk.lab'
+    pg_host: 'postgres.mobile.bk.lab'
     pg_port: '5432'
 
     pg_database: 'awx'
@@ -25,7 +25,7 @@ aap_setup_prep_inv_vars:
 
     automationhub_admin_password: "{{ vault_automationhub_admin_password }}"
 
-    automationhub_pg_host: 'postgres.bk.lab'
+    automationhub_pg_host: 'postgres.mobile.bk.lab'
     automationhub_pg_port: '5432'
 
     automationhub_pg_database: 'automationhub'
@@ -35,7 +35,6 @@ aap_setup_prep_inv_vars:
 
     automationhub_require_content_approval: true
     automationhub_auto_sign_collections: false
-
     automationhub_validate_certs: false
 
 aap_setup_prep_inv_secrets:

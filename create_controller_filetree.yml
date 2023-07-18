@@ -3,9 +3,15 @@
   hosts: utility
   become: false
   gather_facts: false
-  vars_files:
-    - vault.yml
   pre_tasks:
+    - name: Include variables from install_vars directory
+      ansible.builtin.include_vars:
+        file: ./install_vars/homelab/vault.yml
+      when: lab_environment == "homelab"
+    - name: Include variables from install_vars directory
+      ansible.builtin.include_vars:
+        file: ./install_vars/mobile/vault.yml
+      when: lab_environment == "mobile"
     - name: Setup authentication (block)
       when: controller_oauthtoken is not defined
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"

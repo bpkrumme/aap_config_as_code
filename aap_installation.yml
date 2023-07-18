@@ -8,8 +8,6 @@
     aap_setup_working_dir: /root/aap_install
     aap_setup_inst_force: false
     aap_setup_rhel_version: '9'
-  vars_files:
-    - vault.yml
   pre_tasks:
     - name: Ensure working dir exists
       ansible.builtin.file:
