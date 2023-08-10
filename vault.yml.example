@@ -1,0 +1,13 @@
+---
+offline_token: ## Red Hat Customer Portal API Offline Token
+vault_registry_password: ## Red Hat Container Registry Token as used in the AAP Installer
+vault_registry_username: ## Red Hat Registry Username as used in the AAP installer
+vault_pg_password: ## Password used for AAP Database
+vault_automationhub_admin_username: ## Username for AAP Private Automation Hub Admin user
+vault_automationhub_admin_password: ## Password for AAP Private Automation Hub Admin user
+vault_automationhub_hostname: ## Private Automation Hub FQDN
+vault_automationhub_validate_certs: false ## set to true to validate SSL on Private Automation Hub
+vault_controller_username: ## Username for AAP Automation Controller Admin user
+vault_controller_password: ## Password for AAP Automation Controller Admin user
+vault_controller_hostname: ## Automation Controller FQDN
+vault_controller_validate_certs: false ## set to true to validate SSL on Automation Controller
