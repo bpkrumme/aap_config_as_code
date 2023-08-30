@@ -17,6 +17,11 @@ all:
     utility:
       hosts:
         utility.mobile.bk.lab:
+    managed:
+      hosts:
+        node01.mobile.bk.lab:
+        node02.mobile.bk.lab:
+        node03.mobile.bk.lab:
     labhost:
       hosts:
         localhost:

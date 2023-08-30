@@ -13,13 +13,19 @@
         snapshot: baseconfig
       - name: utility
         snapshot: baseconfig
+      - name: node01
+        snapshot: baseconfig
+      - name: node02
+        snapshot: baseconfig
+      - name: node03
+        snapshot: baseconfig
   tasks:
     - name: Revert snapshots on lab virtual machines
       ansible.builtin.command: "virsh snapshot-revert --domain {{ item.name }} --snapshotname {{ item.snapshot }} --running"
       loop: "{{ lab_revert_vms }}"
       changed_when: true
 - name: Ensure systems are available
-  hosts: aap,utility
+  hosts: aap,utility,managed
   become: false
   gather_facts: false
   tasks:
@@ -27,7 +33,7 @@
       ansible.builtin.wait_for_connection:
         timeout: 120
 - name: Configure date and time on lab systems
-  hosts: aap,utility
+  hosts: aap,utility,managed
   become: true
   pre_tasks:
     - name: Reboot to resync time
