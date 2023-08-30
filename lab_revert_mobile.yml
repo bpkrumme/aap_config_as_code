@@ -29,7 +29,12 @@
 - name: Configure date and time on lab systems
   hosts: aap,utility
   become: true
-  tasks:
+  pre_tasks:
+    - name: Reboot to resync time
+      ansible.builtin.reboot:
+    - name: Subscription Manager refresh
+      ansible.builtin.command: 'subscription-manager refresh'
+      changed_when: true
     - name: Run chrony makestep
       ansible.builtin.command: chronyc -a makestep
       when: ansible_facts['distribution'] == "RedHat"

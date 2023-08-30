@@ -1,0 +1,20 @@
+---
+- name: Shut down running VM systems
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    lab_revert_vms:
+      - name: controller
+        snapshot: baseconfig
+      - name: hub
+        snapshot: baseconfig
+      - name: postgres
+        snapshot: baseconfig
+      - name: utility
+        snapshot: baseconfig
+  tasks:
+    - name: Shut down lab virtual machines
+      ansible.builtin.command: "virsh shutdown --domain {{ item.name }}"
+      loop: "{{ lab_revert_vms }}"
+      changed_when: true

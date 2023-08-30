@@ -4,9 +4,11 @@
   gather_facts: false
   become: false
   vars_files:
-    - controller_vars/settings.yaml
-    - vault.yml
+    - install_vars/{{ lab_environment }}/vault.yml
   pre_tasks:
+    - name: Include variables from controller_vars directory
+      ansible.builtin.include_vars:
+        dir: ./contoller_vars/{{ lab_environment }}
     - name: Setup authentication (block)
       when: controller_oauthtoken is not defined
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"
