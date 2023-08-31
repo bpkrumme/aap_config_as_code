@@ -1,0 +1,12 @@
+---
+controller_inventory_sources:
+  - name: "AAP CaC"
+    description: ""
+    organization: "MobileLab"
+    source: "scm"
+    source_project: "AAP Configuration as Code"
+    source_path: "hosts_mobile"
+    inventory: "MobileLab"
+    update_on_launch: "False"
+    overwrite: "False"
+...

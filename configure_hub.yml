@@ -1,0 +1,17 @@
+---
+- name: Configure Automation Hub
+  hosts: utility
+  gather_facts: false
+  become: false
+  vars_files:
+    - install_vars/{{ lab_environment }}/vault.yml
+  pre_tasks:
+    - name: Include variables from hub_vars directory
+      ansible.builtin.include_vars:
+        dir: ./hub_vars/{{ lab_environment }}
+
+  roles:
+    - infra.ah_configuration.collection_remote
+    - infra.ah_configuration.collection_repository
+    - infra.ah_configuration.collection_repository_sync
+...
