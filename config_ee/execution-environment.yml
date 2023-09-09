@@ -1,16 +1,25 @@
 ---
-version: 1
+version: 3
 
 build_arg_defaults:
-  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "-v"
-#  EE_BASE_IMAGE: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
-
-ansible_config: ansible.cfg
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--pre -c -v"
+  PKGMGR_PRESERVE_CACHE: "always"
 
 dependencies:
   galaxy: requirements.yml
 
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+additional_build_files:
+      - src: files/ansible.cfg
+        dest: configs
+
 additional_build_steps:
-  prepend:
-    - COPY ansible.cfg /etc/ansible/ansible.cfg
+  prepend_galaxy:
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ...

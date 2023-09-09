@@ -9,7 +9,7 @@ ansible-navigator:
     enabled: true
     pull:
       policy: missing
-    image: config_ee
+    image: config_ee:latest
   playbook-artifact:
     enable: true
     save-as: 'artifacts/{playbook_name}-artifact-{time_stamp}.json'

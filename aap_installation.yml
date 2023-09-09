@@ -16,12 +16,7 @@
         mode: '0755'
     - name: Include variables from install_vars directory
       ansible.builtin.include_vars:
-        dir: ./install_vars/homelab
-      when: lab_environment == "homelab"
-    - name: Include variables from install_vars directory
-      ansible.builtin.include_vars:
-        dir: ./install_vars/mobile
-      when: lab_environment == "mobile"
+        dir: ./install_vars/{{ lab_environment }}
   roles:
     - infra.aap_utilities.aap_setup_download
     - infra.aap_utilities.aap_setup_prepare
