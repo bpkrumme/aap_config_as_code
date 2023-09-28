@@ -1,0 +1,12 @@
+---
+controller_inventory_sources:
+  - name: "AAP CaC"
+    description: ""
+    organization: "HomeLab"
+    source: "scm"
+    source_project: "AAP Configuration as Code"
+    source_path: "hosts"
+    inventory: "HomeLab"
+    update_on_launch: "False"
+    overwrite: "False"
+...

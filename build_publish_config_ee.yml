@@ -1,0 +1,26 @@
+---
+- name: Build and Publish Config as Code EE
+  hosts: utility
+  gather_facts: false
+  become: false
+  vars_files:
+    - install_vars/{{ lab_environment }}/vault.yml
+  pre_tasks:
+    - name: Enable the AAP repo
+      redhat.rhel_system_roles.rhsm_repository:
+        name:
+          - ansible-automation-platform-2.4-for-rhel-9-x86_64-rpms
+        state: enabled
+      become: true
+    - name: Ensure ansible-builder is installed
+      ansible.builtin.dnf:
+        name: ansible-builder
+        state: present
+      become: true
+    - name: Include variables from ee_vars directory
+      ansible.builtin.include_vars:
+        dir: ./ee_vars/{{ ee_name }}
+
+  roles:
+    - infra.ee_utilities.ee_builder
+...

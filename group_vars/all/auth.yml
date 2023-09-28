@@ -6,4 +6,5 @@ controller_validate_certs: "{{ vault_controller_validate_certs | default(lookup(
 ah_username: "{{ vault_automationhub_admin_username | default(lookup('env', 'AUTOMATIONHUB_USERNAME')) }}"
 ah_password: "{{ vault_automationhub_admin_password | default(lookup('env', 'AUTOMATIONHUB_PASSWORD')) }}"
 ah_hostname: "{{ vault_automationhub_hostname | default(lookup('env', 'AUTOMATIONHUB_HOSTNAME')) }}"
+ah_host: "{{ vault_automationhub_hostname | default(lookup('env', 'AUTOMATIONHUB_HOSTNAME')) }}"
 ah_validate_certs: "{{ vault_automationhub_validate_certs | default (lookup('env', 'AUTOMATIONHUB_VERIFY_SSL')) }}"

@@ -1,0 +1,12 @@
+---
+ah_collection_repositories:
+  - name: validated
+    description: Validated collections
+    remote: rh-certified
+  - name: rh-certified
+    description: Red Hat certified content repository
+    remote: rh-certified
+  - name: community
+    description: Community content repository
+    remote: community
+    wait: false

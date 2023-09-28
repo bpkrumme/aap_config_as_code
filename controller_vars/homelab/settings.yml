@@ -1,0 +1,5 @@
+---
+controller_settings:
+  - settings:
+      TOWER_URL_BASE: "https://controller.bk.lab"
+...

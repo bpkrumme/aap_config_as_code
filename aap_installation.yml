@@ -6,9 +6,15 @@
     aap_setup_down_offline_token: "{{ offline_token }}"
     aap_setup_down_version: '2.4'
     aap_setup_working_dir: /root/aap_install
+    aap_setup_prep_installer_file: /root/ansible-automation-platform-setup-bundle-2.4-2-x86_64.tar.gz
     aap_setup_inst_force: false
     aap_setup_rhel_version: '9'
   pre_tasks:
+    - name: Copy installer tarball to utility
+      ansible.builtin.copy:
+        src: ansible-automation-platform-setup-bundle-2.4-2-x86_64.tar.gz
+        dest: "{{ aap_setup_prep_installer_file }}"
+        mode: '0644'
     - name: Ensure working dir exists
       ansible.builtin.file:
         path: "{{ aap_setup_working_dir }}"
@@ -18,7 +24,7 @@
       ansible.builtin.include_vars:
         dir: ./install_vars/{{ lab_environment }}
   roles:
-    - infra.aap_utilities.aap_setup_download
+#    - infra.aap_utilities.aap_setup_download
     - infra.aap_utilities.aap_setup_prepare
     - infra.aap_utilities.aap_setup_install
     - infra.controller_configuration.license

@@ -1,0 +1,34 @@
+---
+ah_token: "{{ vault_automationhub_auth_token | default(lookup('env', 'AUTOMATIONHUB_AUTH_TOKEN' )) }}"
+ee_builder_dir_clean: true
+builder_dir: "."
+ee_update_base_images: true
+ee_reg_credential: Automation Hub Container Registry
+ee_base_image: "{{ vault_automationhub_hostname }}/ee-supported-rhel8:latest"
+ee_pull_collections_from_hub: true
+ee_registry_dest: "{{ vault_automationhub_hostname}}/{{ ee_name }}"
+ee_registry_username: "{{ vault_automationhub_admin_username }}"
+ee_registry_password: "{{ vault_automationhub_admin_password }}"
+ee_verbosity: 3
+ee_validate_certs: false
+ee_list:
+  - name: "{{ ee_name }}"
+    alt_name: "{{ ee_description }}"
+    tag: "{{ lookup('pipe', 'date +%Y-%m-%d') }}"
+    dependencies:
+      galaxy:
+        collections:
+          - infra.aap_utilities
+          - infra.ee_utilities
+          - infra.controller_configuration
+          - infra.ah_configuration
+          - ansible.controller
+          - redhat.rhel_system_roles
+    build_steps:
+      prepend_final:
+        - RUN whoami
+        - RUN cat /etc/os-release
+      append_final:
+        - RUN echo post-install complete
+    options:
+      package_manager_path: /usr/bin/microdnf

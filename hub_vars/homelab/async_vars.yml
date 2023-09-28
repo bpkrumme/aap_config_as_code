@@ -1,0 +1,3 @@
+---
+ah_configuration_collection_repository_sync_async_retries: 90
+ah_configuration_collection_repository_sync_async_delay: 10
