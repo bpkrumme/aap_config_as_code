@@ -9,5 +9,6 @@ controller_instance_groups:
     policy_instance_minimum: "0"
     policy_instance_percentage: "100"
     instances:
-      - "controller.bk.lab"
+      - "execution01.bk.lab"
+      - "execution02.bk.lab"
 ...

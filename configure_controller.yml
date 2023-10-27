@@ -8,7 +8,7 @@
   pre_tasks:
     - name: Include variables from controller_vars directory
       ansible.builtin.include_vars:
-        dir: ./contoller_vars/{{ lab_environment }}
+        dir: ./controller_vars/{{ lab_environment }}
     - name: Setup authentication (block)
       when: controller_oauthtoken is not defined
       no_log: "{{ controller_configuration_filetree_create_secure_logging | default('false') }}"

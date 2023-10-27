@@ -1,7 +1,7 @@
 ---
 controller_execution_environments:
   - name: "CaC Execution Environment"
-    description: ""
+    description: "EE to perform Configuration as Code Operations"
     organization: "HomeLab"
     image: "hub.bk.lab/config_ee"
     pull: "missing"
