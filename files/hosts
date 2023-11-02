@@ -1,9 +1,9 @@
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 
 172.24.128.10	utility.bk.lab
-172.24.128.15	postgres.bk.lab
+172.24.128.15	postgresql.bk.lab
 172.24.128.20	controller.bk.lab
 172.24.128.21	execution01.bk.lab
 172.24.128.22	execution02.bk.lab
-172.24.128.25	hub.bk.lab
-172.24.128.30	eda.bk.lab
+172.24.128.25	automationhub.bk.lab
+172.24.128.30	edacontroller.bk.lab

@@ -6,9 +6,11 @@ lab_revert_vms:
     snapshot: baseconfig
   - name: execution02
     snapshot: baseconfig
-  - name: hub
+  - name: automationhub
     snapshot: baseconfig
-  - name: postgres
+  - name: postgresql
+    snapshot: baseconfig
+  - name: edacontroller
     snapshot: baseconfig
   - name: utility
     snapshot: baseconfig

@@ -1,0 +1,10 @@
+---
+- name: Install AAP Instance
+  ansible.builtin.import_playbook: aap_installation.yml
+
+- name: Configure Automation Hub
+  ansible.builtin.import_playbook: configure_hub.yml
+
+- name: Configure Automation Controller
+  ansible.builtin.import_playbook: configure_controller.yml
+    
