@@ -3,12 +3,14 @@ aap_setup_prep_inv_nodes:
   automationcontroller:
     - controller.bk.lab
   database:
-    - postgres.bk.lab
+    - postgresql.bk.lab
   automationhub:
-    - hub.bk.lab
+    - automationhub.bk.lab
   execution_nodes:
     - execution01.bk.lab
     - execution02.bk.lab
+  automationedacontroller:
+    - edacontroller.bk.lab
 
 aap_setup_prep_inv_vars:
   automationcontroller:
@@ -18,7 +20,7 @@ aap_setup_prep_inv_vars:
     node_type: execution
   all:
     admin_password: "{{ vault_controller_password }}"
-    pg_host: 'postgres.bk.lab'
+    pg_host: 'postgresql.bk.lab'
     pg_port: '5432'
 
     pg_database: 'awx'
@@ -31,7 +33,7 @@ aap_setup_prep_inv_vars:
 
     automationhub_admin_password: "{{ vault_automationhub_admin_password }}"
 
-    automationhub_pg_host: 'postgres.bk.lab'
+    automationhub_pg_host: 'postgresql.bk.lab'
     automationhub_pg_port: '5432'
 
     automationhub_pg_database: 'automationhub'
@@ -43,6 +45,13 @@ aap_setup_prep_inv_vars:
     automationhub_auto_sign_collections: false
 
     automationhub_validate_certs: false
+
+    automationedacontroller_admin_password: "{{ vault_automationedacontroller_admin_password }}"
+    automationedacontroller_pg_host: 'postgresql.bk.lab'
+    automationedacontroller_pg_port: '5432'
+    automationedacontroller_pg_database: 'automationedacontroller'
+    automationedacontroller_pg_username: 'automationedacontroller'
+    automationedacontroller_pg_password: "{{ vault_pg_password }}"
 
 aap_setup_prep_inv_secrets:
   all:

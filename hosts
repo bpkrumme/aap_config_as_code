@@ -2,12 +2,13 @@
 aapdb
 automationhub
 controller
+eda
 
 [aapdb]
-postgres.bk.lab
+postgresql.bk.lab
 
 [automationhub]
-hub.bk.lab
+automationhub.bk.lab
 
 [controller]
 controller.bk.lab
@@ -15,6 +16,9 @@ controller.bk.lab
 [execution]
 execution01.bk.lab
 execution02.bk.lab
+
+[eda]
+edacontroller.bk.lab
 
 [utility]
 utility.bk.lab

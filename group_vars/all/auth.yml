@@ -8,3 +8,5 @@ ah_password: "{{ vault_automationhub_admin_password | default(lookup('env', 'AUT
 ah_hostname: "{{ vault_automationhub_hostname | default(lookup('env', 'AUTOMATIONHUB_HOSTNAME')) }}"
 ah_host: "{{ vault_automationhub_hostname | default(lookup('env', 'AUTOMATIONHUB_HOSTNAME')) }}"
 ah_validate_certs: "{{ vault_automationhub_validate_certs | default (lookup('env', 'AUTOMATIONHUB_VERIFY_SSL')) }}"
+eda_hostname: "{{ vault_automationedacontroller_hostname | default (lookup('env', 'AUTOMATIONEDACONTROLLER_HOSTNAME')) }}"
+eda_validate_certs: "{{ vault_automationedacontroller_validate_certs | default (lookup('env', 'AUTOMATIONEDACONTROLLER_VALIDATE_CERTS')) }}"
